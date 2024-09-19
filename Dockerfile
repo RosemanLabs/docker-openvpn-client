@@ -1,14 +1,12 @@
-FROM alpine:3.16
+FROM alpine:3.20.3
 
 RUN apk add --no-cache \
         bash \
         bind-tools \
-        dante-server \
         iptables \
         openvpn \
         nftables \
-        shadow \
-        tinyproxy
+        shadow
 
 COPY data/ /data/
 

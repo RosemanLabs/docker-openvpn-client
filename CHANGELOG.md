@@ -1,5 +1,10 @@
 # Changelog
 
+## Version 4.0.0 - 2024-09-19
+- Removed Helm chart
+- Removed Socks-proxy and HTTP-proxy
+- Cleaned up files and rebased on latest upstream Alpine
+
 ## Version 3.1.0 - 2022-06-30
 ### Changed
 - `KILL_SWITCH` now requires `iptables` or `nftables` to be enabled. It defaults to `iptables`. See documentation for more information.

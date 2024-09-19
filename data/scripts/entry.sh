@@ -35,26 +35,6 @@ Allowing subnets: ${SUBNETS:-none}
 Kill switch: $KILL_SWITCH
 Using OpenVPN log level: $VPN_LOG_LEVEL"
 
-if is_enabled "$HTTP_PROXY"; then
-    echo "HTTP proxy: $HTTP_PROXY"
-    if is_enabled "$HTTP_PROXY_USERNAME"; then
-        echo "HTTP proxy username: $HTTP_PROXY_USERNAME"
-    elif is_enabled "$HTTP_PROXY_USERNAME_SECRET"; then
-        echo "HTTP proxy username secret: $HTTP_PROXY_USERNAME_SECRET"
-    fi
-fi
-if is_enabled "$SOCKS_PROXY"; then
-    echo "SOCKS proxy: $SOCKS_PROXY"
-    if [[ $SOCKS_LISTEN_ON ]]; then
-        echo "Listening on: $SOCKS_LISTEN_ON"
-    fi
-    if is_enabled "$SOCKS_PROXY_USERNAME"; then
-        echo "SOCKS proxy username: $SOCKS_PROXY_USERNAME"
-    elif is_enabled "$SOCKS_PROXY_USERNAME_SECRET"; then
-        echo "SOCKS proxy username secret: $SOCKS_PROXY_USERNAME_SECRET"
-    fi
-fi
-
 echo "---
 "
 
@@ -205,14 +185,6 @@ case "$KILL_SWITCH" in
         ;;
 
 esac
-
-if is_enabled "$HTTP_PROXY" ; then
-    scripts/run-http-proxy.sh &
-fi
-
-if is_enabled "$SOCKS_PROXY" ; then
-    scripts/run-socks-proxy.sh &
-fi
 
 openvpn_args=(
     "--config" "$modified_config_file"

@@ -13,8 +13,8 @@ docker_build_cmd = [
     'docker', 'build',
     '--build-arg', f'BUILD_DATE={str(datetime.datetime.now())}',
     '--build-arg', f'IMAGE_VERSION={args.image_version}',
-    '--tag', f'ghcr.io/wfg/openvpn-client:{args.image_version}',
-    '--tag', 'ghcr.io/wfg/openvpn-client:latest',
+    '--tag', f'ghcr.io/RosemanLabs/openvpn-client:{args.image_version}',
+    '--tag', 'ghcr.io/RosemanLabs/openvpn-client:latest',
     '.',
 ]
 subprocess.run(docker_build_cmd)
